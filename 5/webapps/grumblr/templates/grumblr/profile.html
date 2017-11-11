@@ -1,0 +1,90 @@
+{% extends "grumblr/global.html" %}
+
+{% load staticfiles %}
+{% block title %}Profile Page{% endblock %}
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'grumblr/profile.css' %}" />
+{% endblock %}
+
+{%block link%}
+<li><a href="{% url 'profile' request.user.id %}">My Profile</a></li>
+{%endblock%}
+
+{% block content %}
+    <!-- Introduction -->
+    <div class="container">
+    	<div class="row">
+
+    		<div class="col-md-4">
+    			<img src="{{ user.profile.image.url }}" align="middle" class="photo1">
+    		</div>
+    		<div class="col-md-8">
+                <input type="hidden" id="userid" value="{{user.id}}">
+                <h1 class="intro-words"><b>{{user}}</b><span class="span2"></span>({{fullname}})</h1>
+                <p><font size="4.5">{{user.profile.bio}}</font></p>
+    			<a><font size="4"><b>{{count}}</b> Posts</font></a>
+				<span class="span1"></span>
+    			<a><font size="4"><b>{{follower}}</b> Followers</font></a>
+    			<span class="span1"></span>
+    			<a><font size="4"><b>{{following}}</b> Following</font></a>
+    			<span class="span1"></span>
+    			<a><font size="4"><b>999+</b> Likes</font></a>
+    			<span class="span1"></span>
+    			<a><font size="4"><b>7</b> Stories</font></a>
+    		</div>
+    	</div>
+    </div>
+
+    <div class="container">
+    	<div class="row">
+    		<div class="col-md-4">
+    			<ul class="side-icon">
+    				<li>
+    					<img src="https://i.imgur.com/75TPATJ.jpg" class="icon">
+    					<a class="side-intro"><font size="4">Pittsburgh, PA</font></a>
+    				</li>
+    				<li type="notfirst">
+    					<img src="https://i.imgur.com/BuK5PTO.jpg" class="icon">
+    					<a class="side-intro"><font size="4">{{user.profile.age}} years old</font></a>
+    				</li>
+    				<li type="notfirst">
+    					<img src="https://i.imgur.com/7ISdW4X.jpg" class="icon">
+    					<a class="side-intro"><font size="4">Message</font></a>
+    				</li>-
+                    <li type="notfirst">
+
+                        {% if flag == "1" %}
+                        <button class="fo" onclick="location.href='{% url 'follow' user.id %}'">follow</button>
+                        {% elif flag == "2" %}
+                        <button class="unfo" onclick="location.href='{% url 'unfollow' user.id %}'">unfollow</button>
+                        {% endif %}
+                        
+                    </li>
+    			</ul>
+    		</div>
+            <div class="col-md-8"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+    		<div class="col-md-7">
+                <div class = "move">
+                <ol class="list" id="item-list">
+                
+                </ol>
+                </div>
+    		</div>
+    		<div class="col-md-1"></div>    		
+    	</div>
+    </div>
+{% endblock %}
+
+    
+
+
+
+{%block js%}
+<script src="{% static 'grumblr/profile.js' %}" type="text/javascript"></script>
+{%endblock%}

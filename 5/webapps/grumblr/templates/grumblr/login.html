@@ -1,0 +1,69 @@
+{% extends "grumblr/registration.html" %}
+{% load staticfiles %}
+{%block title%}Log In Page{%endblock%}
+{%block style%}
+    <link rel="stylesheet" type="text/css" href="{% static 'grumblr/login.css' %}" />
+{%endblock%}
+	{%block content%}
+    <!-- Log in -->
+    <div class="container">
+	    <div class="row">
+	    	<div class="col-md-4"></div>
+	    	<div class="col-md-4">
+		    	<div class="ex1">
+		      		<form class="form-signin" method="POST" action="{% url 'login' %}">
+			        	<label for="username" class="sr-only">Username</label>
+			        	<input type="username" name="username" id="inputUsername" class="form-control" placeholder="Username" autofocus="" value={{username}}>
+
+			        	<label for="password" class="sr-only">Password</label>
+			        	<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" value={{password}}>
+	
+			        	<button class="button" type="submit" value="Login">Log In</button>
+			        	{% csrf_token %}
+		     		</form>
+		     		{% if form.errors %}
+		     			<p class="error">Incorrect username or password.</p>
+		     		{% endif %}
+		     		<a class="nav-link center" href="#"><font size="2">Forgot account?</font></a>
+		      	</div>
+	      	</div>
+	      	<div class="col-md-4"></div>
+	    </div>
+
+	    <p></p>
+
+	    <!-- New User -->
+	    <div class="row">
+	    	<div class="col-md-4"></div>
+	    	<div class="col-md-4">
+		    	<div class="ex2">
+		    		<div class="words">
+		    			<a class="nav-link center"><font size="4">Don't have an account?</font></a>
+		    		</div>
+		      		<form class="form-signin">	        	
+			        	<button class="button" type="submit" onclick="window.open('register')">Sign Up</button>
+		     		</form>
+		      	</div>
+	      	</div>
+	      	<div class="col-md-4"></div>
+	    </div>
+	    <p></p>
+    </div>
+    {%endblock%}
+
+
+
+    
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+</body>
+</html>

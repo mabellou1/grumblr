@@ -1,0 +1,27 @@
+{%extends "grumblr/registration.html"%}
+{% load staticfiles %}
+{%block title%}Registration Page{%endblock%}
+
+{%block content%}
+<div class="container">
+	    <div class="row">
+	    	<div class="col-md-3"></div>
+	    	<div class="col-md-6">
+		    	<div class="ex1">
+		      		<form method="POST" enctype="multipart/form-data">
+		      			{% for field in form.visible_fields %}
+		      			<p class = "label">{{field.label}}</p>
+		      			<p>{{ field }}</p>
+		      			{% endfor %}
+			        	<button class="button" type="submit">Edit</button>
+			        	{% csrf_token %}
+		     		</form>
+		     		{%block words%}
+		     		
+		     		{%endblock%}
+		      	</div>
+	      	</div>
+	      	<div class="col-md-3"></div>
+	    </div>
+    </div>
+{%endblock%}
