@@ -81,8 +81,12 @@ WSGI_APPLICATION = 'webapps.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+       # 'ENGINE': 'django.db.backends.sqlite3',
+       # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+	'ENGINE': 'django.db.backends.mysql',
+	'NAME': 'grumblr',
+	'USER': 'root',
+	'PASSWORD': 'morning941016',
     }
 }
 
@@ -129,6 +133,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'webapps/media')
 
 MEDIA_URL = '/media/'
 
-Email_BACKEND = 'django.core.email.backends.console.Email_Backend'
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025
+Email_BACKEND = 'django.core.email.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'mabel.zlou@gmail.com'
+EMAIL_HOST_PASSWORD = 'morning941016'
+EMAIL_USE_SSL = True

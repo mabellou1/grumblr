@@ -250,7 +250,7 @@ def send_change_email(request):
 
 	send_mail(subject="Change your password",
 			  message = email_body,
-			  from_email="zlou@andrew.cmu.edu",
+			  from_email="mabel.zlou@gmail.com",
 			  recipient_list=[request.user.email])
 	message = "Email has been sent."
 	return render(request, "grumblr/email.html", {'message':message})
@@ -265,7 +265,7 @@ def send_confirm_email(request):
 
 	send_mail(subject="Confirm your registration",
 			  message = email_body,
-			  from_email="zlou@andrew.cmu.edu",
+			  from_email="mabel.zlou@gmail.com",
 			  recipient_list=[request.user.email])
 	message = "Email has been sent."
 	return render(request, "grumblr/email.html", {'message':message})
@@ -396,7 +396,7 @@ def register(request):
 
 	send_mail(subject="Confirm your registration",
 			  message = email_body,
-			  from_email="zlou@andrew.cmu.edu",
+			  from_email="mabel.zlou@gmail.com",
 			  recipient_list=[new_user.email])
 	return redirect('/grumblr/')
 
